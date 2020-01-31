@@ -5,33 +5,40 @@ export class _SedeDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    if(('domicilio_' in row)
+    var rowCloned = Object.assign({}, row)
+    if(('domicilio_' in rowCloned)
     ){
-      this.stg.setItem('domicilio' + row['domicilio_'].id, row['domicilio_']);
-      delete row['domicilio_'];
+      this.stg.setItem('domicilio' + rowCloned['domicilio_'].id, rowCloned['domicilio_']);
+      delete rowCloned['domicilio_'];
     }
-    if(('tipo_sede_' in row)
+    if(('tipo_sede_' in rowCloned)
     ){
-      this.stg.setItem('tipo_sede' + row['tipo_sede_'].id, row['tipo_sede_']);
-      delete row['tipo_sede_'];
+      this.stg.setItem('tipo_sede' + rowCloned['tipo_sede_'].id, rowCloned['tipo_sede_']);
+      delete rowCloned['tipo_sede_'];
     }
-    if(('centro_educativo_' in row)
-    && ('domicilio_' in row['centro_educativo_'])
+    if(('centro_educativo_' in rowCloned)
+    && ('domicilio_' in rowCloned['centro_educativo_'])
     ){
-      this.stg.setItem('domicilio' + row['centro_educativo_']['domicilio_'].id, row['centro_educativo_']['domicilio_']);
-      delete row['centro_educativo_']['domicilio_'];
+      this.stg.setItem('domicilio' + rowCloned['centro_educativo_']['domicilio_'].id, rowCloned['centro_educativo_']['domicilio_']);
+      delete rowCloned['centro_educativo_']['domicilio_'];
     }
-    if(('centro_educativo_' in row)
+    if(('centro_educativo_' in rowCloned)
     ){
-      this.stg.setItem('centro_educativo' + row['centro_educativo_'].id, row['centro_educativo_']);
-      delete row['centro_educativo_'];
+      this.stg.setItem('centro_educativo' + rowCloned['centro_educativo_'].id, rowCloned['centro_educativo_']);
+      delete rowCloned['centro_educativo_'];
     }
-    if(('coordinador_' in row)
+    if(('coordinador_' in rowCloned)
+    && ('domicilio_' in rowCloned['coordinador_'])
     ){
-      this.stg.setItem('persona' + row['coordinador_'].id, row['coordinador_']);
-      delete row['coordinador_'];
+      this.stg.setItem('domicilio' + rowCloned['coordinador_']['domicilio_'].id, rowCloned['coordinador_']['domicilio_']);
+      delete rowCloned['coordinador_']['domicilio_'];
     }
-    this.stg.setItem("sede" + row.id, row);
+    if(('coordinador_' in rowCloned)
+    ){
+      this.stg.setItem('persona' + rowCloned['coordinador_'].id, rowCloned['coordinador_']);
+      delete rowCloned['coordinador_'];
+    }
+    this.stg.setItem("sede" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

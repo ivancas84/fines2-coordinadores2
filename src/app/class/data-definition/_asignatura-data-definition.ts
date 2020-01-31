@@ -5,7 +5,8 @@ export class _AsignaturaDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    this.stg.setItem("asignatura" + row.id, row);
+    var rowCloned = Object.assign({}, row)
+    this.stg.setItem("asignatura" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

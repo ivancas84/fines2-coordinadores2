@@ -5,7 +5,8 @@ export class _CargoDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    this.stg.setItem("cargo" + row.id, row);
+    var rowCloned = Object.assign({}, row)
+    this.stg.setItem("cargo" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

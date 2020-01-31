@@ -5,7 +5,8 @@ export class _PlanDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    this.stg.setItem("plan" + row.id, row);
+    var rowCloned = Object.assign({}, row)
+    this.stg.setItem("plan" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

@@ -24,7 +24,6 @@ export class ConsolidadoTableComponent extends TableComponent {
   ngOnInit(): void {
     this.data$.subscribe(
       response => {
-        console.log(response)
         if(!isEmptyObject(response)) {
           var obs = [];
           var ids = [];
@@ -32,9 +31,6 @@ export class ConsolidadoTableComponent extends TableComponent {
           for(var i in response){
             ids.push(response[i].id);
           }
-
-          if(obs.length){ forkJoin(obs).subscribe( () => this.load$.next(true)) } 
-          else { this.load$.next(true) }
 
           var display = new Display();
           display.condition = ["comision","=",ids];

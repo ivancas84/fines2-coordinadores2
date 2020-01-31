@@ -5,7 +5,13 @@ export class _PersonaDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    this.stg.setItem("persona" + row.id, row);
+    var rowCloned = Object.assign({}, row)
+    if(('domicilio_' in rowCloned)
+    ){
+      this.stg.setItem('domicilio' + rowCloned['domicilio_'].id, rowCloned['domicilio_']);
+      delete rowCloned['domicilio_'];
+    }
+    this.stg.setItem("persona" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

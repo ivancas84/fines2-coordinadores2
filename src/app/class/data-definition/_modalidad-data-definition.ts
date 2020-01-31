@@ -5,7 +5,8 @@ export class _ModalidadDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    this.stg.setItem("modalidad" + row.id, row);
+    var rowCloned = Object.assign({}, row)
+    this.stg.setItem("modalidad" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

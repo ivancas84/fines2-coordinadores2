@@ -5,7 +5,8 @@ export class _DomicilioDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    this.stg.setItem("domicilio" + row.id, row);
+    var rowCloned = Object.assign({}, row)
+    this.stg.setItem("domicilio" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

@@ -7,17 +7,18 @@ export class _CargaHorariaDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    if(('plan_' in row)
+    var rowCloned = Object.assign({}, row)
+    if(('plan_' in rowCloned)
     ){
-      this.stg.setItem('plan' + row['plan_'].id, row['plan_']);
-      delete row['plan_'];
+      this.stg.setItem('plan' + rowCloned['plan_'].id, rowCloned['plan_']);
+      delete rowCloned['plan_'];
     }
-    if(('asignatura_' in row)
+    if(('asignatura_' in rowCloned)
     ){
-      this.stg.setItem('asignatura' + row['asignatura_'].id, row['asignatura_']);
-      delete row['asignatura_'];
+      this.stg.setItem('asignatura' + rowCloned['asignatura_'].id, rowCloned['asignatura_']);
+      delete rowCloned['asignatura_'];
     }
-    this.stg.setItem("carga_horaria" + row.id, row);
+    this.stg.setItem("carga_horaria" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

@@ -5,7 +5,8 @@ export class _TipoSedeDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    this.stg.setItem("tipo_sede" + row.id, row);
+    var rowCloned = Object.assign({}, row)
+    this.stg.setItem("tipo_sede" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

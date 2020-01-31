@@ -5,12 +5,13 @@ export class _CentroEducativoDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    if(('domicilio_' in row)
+    var rowCloned = Object.assign({}, row)
+    if(('domicilio_' in rowCloned)
     ){
-      this.stg.setItem('domicilio' + row['domicilio_'].id, row['domicilio_']);
-      delete row['domicilio_'];
+      this.stg.setItem('domicilio' + rowCloned['domicilio_'].id, rowCloned['domicilio_']);
+      delete rowCloned['domicilio_'];
     }
-    this.stg.setItem("centro_educativo" + row.id, row);
+    this.stg.setItem("centro_educativo" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {

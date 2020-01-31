@@ -6,112 +6,128 @@ export class _ComisionDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    if(('sede_' in row)
-    && ('domicilio_' in row['sede_'])
+    var rowCloned = Object.assign({}, row)
+    if(('sede_' in rowCloned)
+    && ('domicilio_' in rowCloned['sede_'])
     ){
-      this.stg.setItem('domicilio' + row['sede_']['domicilio_'].id, row['sede_']['domicilio_']);
-      delete row['sede_']['domicilio_'];
+      this.stg.setItem('domicilio' + rowCloned['sede_']['domicilio_'].id, rowCloned['sede_']['domicilio_']);
+      delete rowCloned['sede_']['domicilio_'];
     }
-    if(('sede_' in row)
-    && ('tipo_sede_' in row['sede_'])
+    if(('sede_' in rowCloned)
+    && ('tipo_sede_' in rowCloned['sede_'])
     ){
-      this.stg.setItem('tipo_sede' + row['sede_']['tipo_sede_'].id, row['sede_']['tipo_sede_']);
-      delete row['sede_']['tipo_sede_'];
+      this.stg.setItem('tipo_sede' + rowCloned['sede_']['tipo_sede_'].id, rowCloned['sede_']['tipo_sede_']);
+      delete rowCloned['sede_']['tipo_sede_'];
     }
-    if(('sede_' in row)
-    && ('centro_educativo_' in row['sede_'])
-    && ('domicilio_' in row['sede_']['centro_educativo_'])
+    if(('sede_' in rowCloned)
+    && ('centro_educativo_' in rowCloned['sede_'])
+    && ('domicilio_' in rowCloned['sede_']['centro_educativo_'])
     ){
-      this.stg.setItem('domicilio' + row['sede_']['centro_educativo_']['domicilio_'].id, row['sede_']['centro_educativo_']['domicilio_']);
-      delete row['sede_']['centro_educativo_']['domicilio_'];
+      this.stg.setItem('domicilio' + rowCloned['sede_']['centro_educativo_']['domicilio_'].id, rowCloned['sede_']['centro_educativo_']['domicilio_']);
+      delete rowCloned['sede_']['centro_educativo_']['domicilio_'];
     }
-    if(('sede_' in row)
-    && ('centro_educativo_' in row['sede_'])
+    if(('sede_' in rowCloned)
+    && ('centro_educativo_' in rowCloned['sede_'])
     ){
-      this.stg.setItem('centro_educativo' + row['sede_']['centro_educativo_'].id, row['sede_']['centro_educativo_']);
-      delete row['sede_']['centro_educativo_'];
+      this.stg.setItem('centro_educativo' + rowCloned['sede_']['centro_educativo_'].id, rowCloned['sede_']['centro_educativo_']);
+      delete rowCloned['sede_']['centro_educativo_'];
     }
-    if(('sede_' in row)
-    && ('coordinador_' in row['sede_'])
+    if(('sede_' in rowCloned)
+    && ('coordinador_' in rowCloned['sede_'])
+    && ('domicilio_' in rowCloned['sede_']['coordinador_'])
     ){
-      this.stg.setItem('persona' + row['sede_']['coordinador_'].id, row['sede_']['coordinador_']);
-      delete row['sede_']['coordinador_'];
+      this.stg.setItem('domicilio' + rowCloned['sede_']['coordinador_']['domicilio_'].id, rowCloned['sede_']['coordinador_']['domicilio_']);
+      delete rowCloned['sede_']['coordinador_']['domicilio_'];
     }
-    if(('sede_' in row)
+    if(('sede_' in rowCloned)
+    && ('coordinador_' in rowCloned['sede_'])
     ){
-      this.stg.setItem('sede' + row['sede_'].id, row['sede_']);
-      delete row['sede_'];
+      this.stg.setItem('persona' + rowCloned['sede_']['coordinador_'].id, rowCloned['sede_']['coordinador_']);
+      delete rowCloned['sede_']['coordinador_'];
     }
-    if(('plan_' in row)
+    if(('sede_' in rowCloned)
     ){
-      this.stg.setItem('plan' + row['plan_'].id, row['plan_']);
-      delete row['plan_'];
+      this.stg.setItem('sede' + rowCloned['sede_'].id, rowCloned['sede_']);
+      delete rowCloned['sede_'];
     }
-    if(('modalidad_' in row)
+    if(('plan_' in rowCloned)
     ){
-      this.stg.setItem('modalidad' + row['modalidad_'].id, row['modalidad_']);
-      delete row['modalidad_'];
+      this.stg.setItem('plan' + rowCloned['plan_'].id, rowCloned['plan_']);
+      delete rowCloned['plan_'];
     }
-    if(('comision_siguiente_' in row)
-    && ('sede_' in row['comision_siguiente_'])
-    && ('domicilio_' in row['comision_siguiente_']['sede_'])
+    if(('modalidad_' in rowCloned)
     ){
-      this.stg.setItem('domicilio' + row['comision_siguiente_']['sede_']['domicilio_'].id, row['comision_siguiente_']['sede_']['domicilio_']);
-      delete row['comision_siguiente_']['sede_']['domicilio_'];
+      this.stg.setItem('modalidad' + rowCloned['modalidad_'].id, rowCloned['modalidad_']);
+      delete rowCloned['modalidad_'];
     }
-    if(('comision_siguiente_' in row)
-    && ('sede_' in row['comision_siguiente_'])
-    && ('tipo_sede_' in row['comision_siguiente_']['sede_'])
+    if(('comision_siguiente_' in rowCloned)
+    && ('sede_' in rowCloned['comision_siguiente_'])
+    && ('domicilio_' in rowCloned['comision_siguiente_']['sede_'])
     ){
-      this.stg.setItem('tipo_sede' + row['comision_siguiente_']['sede_']['tipo_sede_'].id, row['comision_siguiente_']['sede_']['tipo_sede_']);
-      delete row['comision_siguiente_']['sede_']['tipo_sede_'];
+      this.stg.setItem('domicilio' + rowCloned['comision_siguiente_']['sede_']['domicilio_'].id, rowCloned['comision_siguiente_']['sede_']['domicilio_']);
+      delete rowCloned['comision_siguiente_']['sede_']['domicilio_'];
     }
-    if(('comision_siguiente_' in row)
-    && ('sede_' in row['comision_siguiente_'])
-    && ('centro_educativo_' in row['comision_siguiente_']['sede_'])
-    && ('domicilio_' in row['comision_siguiente_']['sede_']['centro_educativo_'])
+    if(('comision_siguiente_' in rowCloned)
+    && ('sede_' in rowCloned['comision_siguiente_'])
+    && ('tipo_sede_' in rowCloned['comision_siguiente_']['sede_'])
     ){
-      this.stg.setItem('domicilio' + row['comision_siguiente_']['sede_']['centro_educativo_']['domicilio_'].id, row['comision_siguiente_']['sede_']['centro_educativo_']['domicilio_']);
-      delete row['comision_siguiente_']['sede_']['centro_educativo_']['domicilio_'];
+      this.stg.setItem('tipo_sede' + rowCloned['comision_siguiente_']['sede_']['tipo_sede_'].id, rowCloned['comision_siguiente_']['sede_']['tipo_sede_']);
+      delete rowCloned['comision_siguiente_']['sede_']['tipo_sede_'];
     }
-    if(('comision_siguiente_' in row)
-    && ('sede_' in row['comision_siguiente_'])
-    && ('centro_educativo_' in row['comision_siguiente_']['sede_'])
+    if(('comision_siguiente_' in rowCloned)
+    && ('sede_' in rowCloned['comision_siguiente_'])
+    && ('centro_educativo_' in rowCloned['comision_siguiente_']['sede_'])
+    && ('domicilio_' in rowCloned['comision_siguiente_']['sede_']['centro_educativo_'])
     ){
-      this.stg.setItem('centro_educativo' + row['comision_siguiente_']['sede_']['centro_educativo_'].id, row['comision_siguiente_']['sede_']['centro_educativo_']);
-      delete row['comision_siguiente_']['sede_']['centro_educativo_'];
+      this.stg.setItem('domicilio' + rowCloned['comision_siguiente_']['sede_']['centro_educativo_']['domicilio_'].id, rowCloned['comision_siguiente_']['sede_']['centro_educativo_']['domicilio_']);
+      delete rowCloned['comision_siguiente_']['sede_']['centro_educativo_']['domicilio_'];
     }
-    if(('comision_siguiente_' in row)
-    && ('sede_' in row['comision_siguiente_'])
-    && ('coordinador_' in row['comision_siguiente_']['sede_'])
+    if(('comision_siguiente_' in rowCloned)
+    && ('sede_' in rowCloned['comision_siguiente_'])
+    && ('centro_educativo_' in rowCloned['comision_siguiente_']['sede_'])
     ){
-      this.stg.setItem('persona' + row['comision_siguiente_']['sede_']['coordinador_'].id, row['comision_siguiente_']['sede_']['coordinador_']);
-      delete row['comision_siguiente_']['sede_']['coordinador_'];
+      this.stg.setItem('centro_educativo' + rowCloned['comision_siguiente_']['sede_']['centro_educativo_'].id, rowCloned['comision_siguiente_']['sede_']['centro_educativo_']);
+      delete rowCloned['comision_siguiente_']['sede_']['centro_educativo_'];
     }
-    if(('comision_siguiente_' in row)
-    && ('sede_' in row['comision_siguiente_'])
+    if(('comision_siguiente_' in rowCloned)
+    && ('sede_' in rowCloned['comision_siguiente_'])
+    && ('coordinador_' in rowCloned['comision_siguiente_']['sede_'])
+    && ('domicilio_' in rowCloned['comision_siguiente_']['sede_']['coordinador_'])
     ){
-      this.stg.setItem('sede' + row['comision_siguiente_']['sede_'].id, row['comision_siguiente_']['sede_']);
-      delete row['comision_siguiente_']['sede_'];
+      this.stg.setItem('domicilio' + rowCloned['comision_siguiente_']['sede_']['coordinador_']['domicilio_'].id, rowCloned['comision_siguiente_']['sede_']['coordinador_']['domicilio_']);
+      delete rowCloned['comision_siguiente_']['sede_']['coordinador_']['domicilio_'];
     }
-    if(('comision_siguiente_' in row)
-    && ('plan_' in row['comision_siguiente_'])
+    if(('comision_siguiente_' in rowCloned)
+    && ('sede_' in rowCloned['comision_siguiente_'])
+    && ('coordinador_' in rowCloned['comision_siguiente_']['sede_'])
     ){
-      this.stg.setItem('plan' + row['comision_siguiente_']['plan_'].id, row['comision_siguiente_']['plan_']);
-      delete row['comision_siguiente_']['plan_'];
+      this.stg.setItem('persona' + rowCloned['comision_siguiente_']['sede_']['coordinador_'].id, rowCloned['comision_siguiente_']['sede_']['coordinador_']);
+      delete rowCloned['comision_siguiente_']['sede_']['coordinador_'];
     }
-    if(('comision_siguiente_' in row)
-    && ('modalidad_' in row['comision_siguiente_'])
+    if(('comision_siguiente_' in rowCloned)
+    && ('sede_' in rowCloned['comision_siguiente_'])
     ){
-      this.stg.setItem('modalidad' + row['comision_siguiente_']['modalidad_'].id, row['comision_siguiente_']['modalidad_']);
-      delete row['comision_siguiente_']['modalidad_'];
+      this.stg.setItem('sede' + rowCloned['comision_siguiente_']['sede_'].id, rowCloned['comision_siguiente_']['sede_']);
+      delete rowCloned['comision_siguiente_']['sede_'];
     }
-    if(('comision_siguiente_' in row)
+    if(('comision_siguiente_' in rowCloned)
+    && ('plan_' in rowCloned['comision_siguiente_'])
     ){
-      this.stg.setItem('comision' + row['comision_siguiente_'].id, row['comision_siguiente_']);
-      delete row['comision_siguiente_'];
+      this.stg.setItem('plan' + rowCloned['comision_siguiente_']['plan_'].id, rowCloned['comision_siguiente_']['plan_']);
+      delete rowCloned['comision_siguiente_']['plan_'];
     }
-    this.stg.setItem("comision" + row.id, row);
+    if(('comision_siguiente_' in rowCloned)
+    && ('modalidad_' in rowCloned['comision_siguiente_'])
+    ){
+      this.stg.setItem('modalidad' + rowCloned['comision_siguiente_']['modalidad_'].id, rowCloned['comision_siguiente_']['modalidad_']);
+      delete rowCloned['comision_siguiente_']['modalidad_'];
+    }
+    if(('comision_siguiente_' in rowCloned)
+    ){
+      this.stg.setItem('comision' + rowCloned['comision_siguiente_'].id, rowCloned['comision_siguiente_']);
+      delete rowCloned['comision_siguiente_'];
+    }
+    this.stg.setItem("comision" + rowCloned.id, rowCloned);
   }
 
   label (id: string | number): string {
