@@ -1,0 +1,34 @@
+
+    <ng-template #loading>No se han encontrado registros...</ng-template>
+
+    <div *ngIf="load$ | async; else loading" class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Sede</th>
+            <th>Comision</th>
+            <th>Curso</th>
+            <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of (data$ | async); let i = index">
+              <td><a [routerLink]="['/sede-show']" [queryParams]="{id:row.sede}" >{{row.sede | label:'sede'}}</a></td>
+              <td>{{row.id | label:'comision'}}
+                <br>{{row.plan_.orientacion}}
+              </td>
+              <td>
+                <div *ngFor="let curso of (curso_$ | async)[row.id]; let j = index">
+                  {{curso.id}}
+                </div>
+              </td>
+
+              <td>
+              <!-- a class="btn btn-info btn-sm" [routerLink]="['/comision-detail']" [queryParams]="{id:row.id}" ><span class="oi oi-eye" title="Detalle"></span></a>    
+              <a class="btn btn-warning btn-sm" [routerLink]="['/comision-admin']" [queryParams]="{id:row.id}" ><span class="oi oi-pencil" title="Modificar"></span></a>              
+              <!-- button class="btn btn-danger btn-sm" type="button" (click)="delete(i)"><span class="oi oi-trash" title="Eliminar"></span></button -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
