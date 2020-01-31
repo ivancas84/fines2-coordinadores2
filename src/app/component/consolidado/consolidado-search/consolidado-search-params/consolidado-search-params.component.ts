@@ -60,6 +60,11 @@ export class ConsolidadoSearchParamsComponent extends SearchParamsComponent {
             obs.push(ob);
           }
 
+          if(response.sed_centro_educativo) {
+            var ob = this.dd.getOrNull("centro_educativo",response.sed_centro_educativo);
+            obs.push(ob);
+          }
+
           if(obs.length){ forkJoin(obs).subscribe( () => this.fieldset.reset(response) ); } 
           else { this.fieldset.reset(response); }
         }
@@ -69,19 +74,19 @@ export class ConsolidadoSearchParamsComponent extends SearchParamsComponent {
 
   formGroup(): FormGroup {
     let fg: FormGroup = this.fb.group({
-      turno: null,
-      division: null,
-      anio: null,
-      semestre: null,
-      autorizada: null,
-      apertura: null,
-      publicada: null,
-      fecha_anio: null,
-      fecha_semestre: null,
-      sede: null,
-      plan: null,
-      modalidad: null,
-      comision_siguiente: null,
+      com_turno: null,
+      com_division: null,
+      com_anio: null,
+      com_semestre: null,
+      com_autorizada: null,
+      com_apertura: null,
+      com_publicada: null,
+      com_fecha_anio: null,
+      com_fecha_semestre: null,
+      com_sede: null,
+      com_plan: null,
+      com_modalidad: null,
+      com_sed_centro_educativo: null,
     });
     return fg;
   }

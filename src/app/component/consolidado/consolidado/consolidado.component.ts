@@ -11,7 +11,7 @@ import { Display } from '@class/display';
 })
 export class ConsolidadoComponent extends ShowComponent {
 
-  readonly entityName: string = "comision";
+  readonly entityName: string = "curso";
 
   constructor(
     protected dd: DataDefinitionService, 
@@ -24,7 +24,7 @@ export class ConsolidadoComponent extends ShowComponent {
   initDisplay(params){
     this.display = new Display();
     this.display.setConditionParams(params);
-    if(!this.display.params.hasOwnProperty("fecha_anio")) this.display.params["fecha_anio"] = "2020";
+    if(!this.display.params.hasOwnProperty("com_fecha_anio")) this.display.params["com_fecha_anio"] = "2020";
     this.condition$.next(this.display.condition);
     this.params$.next(this.display.params);
   }

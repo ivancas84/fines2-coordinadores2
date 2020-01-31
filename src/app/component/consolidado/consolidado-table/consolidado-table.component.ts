@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 })
 export class ConsolidadoTableComponent extends TableComponent {
 
-  readonly entityName = 'comision';
+  readonly entityName = 'curso';
 
   curso_$: Observable<any>;
 
@@ -21,27 +21,6 @@ export class ConsolidadoTableComponent extends TableComponent {
     super();
   }
 
-  ngOnInit(): void {
-    this.data$.subscribe(
-      response => {
-        if(!isEmptyObject(response)) {
-          var obs = [];
-          var ids = [];
 
-          for(var i in response){
-            ids.push(response[i].id);
-          }
-
-          var display = new Display();
-          display.condition = ["comision","=",ids];
-          this.curso_$ = this.dd.all("curso",display).pipe(map(
-            curso_ => {
-              return arrayGroupValue(curso_,"comision");
-            }
-          ))
-        }
-      }
-    );
-  }
 
 }

@@ -5,7 +5,7 @@ export class _CursoDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    var rowCloned = Object.assign({}, row)
+    var rowCloned = JSON.parse(JSON.stringify(row))
     if(('comision_' in rowCloned)
     && ('sede_' in rowCloned['comision_'])
     && ('domicilio_' in rowCloned['comision_']['sede_'])

@@ -2,7 +2,7 @@
   <div class="form-inline">
     <div class="form-group mb-2">
       <label class="col-form-label">Turno:</label>
-      <select class="form-control" formControlName="turno">
+      <select class="form-control" formControlName="com_turno">
         <option [ngValue]="null">--Turno--</option>
             <option value="Mañana">Mañana</option>
             <option value="Tarde">Tarde</option>
@@ -10,13 +10,9 @@
       </select>
     </div>
     <div class="form-group mb-2">
-      <label class="col-form-label">Division</label>
-      <input class="form-control" type="text" formControlName="division">
-    </div>
-    <div class="form-group mb-2">
-      <label class="col-form-label">Anio:</label>
-      <select class="form-control" formControlName="anio">
-        <option [ngValue]="null">--Anio--</option>
+      <label class="col-form-label">Año:</label>
+      <select class="form-control" formControlName="com_anio">
+        <option [ngValue]="null">--Año--</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -24,7 +20,7 @@
     </div>
     <div class="form-group mb-2">
       <label class="col-form-label">Semestre:</label>
-      <select class="form-control" formControlName="semestre">
+      <select class="form-control" formControlName="com_semestre">
         <option [ngValue]="null">--Semestre--</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -32,15 +28,15 @@
     </div>
     <div class="form-group mb-2">
       <label class="col-form-label">Autorizada</label>
-      <select class="form-control" formControlName="autorizada">
+      <select class="form-control" formControlName="com_autorizada">
         <option [ngValue]="null">--Todos--</option>
-        <option [ngValue]="true">Sí</option>
-        <option [ngValue]="false">No</option>
+        <option [ngValue]="'true'">Sí</option>
+        <option [ngValue]="'false'">No</option>
       </select>
     </div>
     <div class="form-group mb-2">
       <label class="col-form-label">Apertura</label>
-      <select class="form-control" formControlName="apertura">
+      <select class="form-control" formControlName="com_apertura">
         <option [ngValue]="null">--Todos--</option>
         <option [ngValue]="true">Sí</option>
         <option [ngValue]="false">No</option>
@@ -48,7 +44,7 @@
     </div>
     <div class="form-group mb-2">
       <label class="col-form-label">Publicada</label>
-      <select class="form-control" formControlName="publicada">
+      <select class="form-control" formControlName="com_publicada">
         <option [ngValue]="null">--Todos--</option>
         <option [ngValue]="true">Sí</option>
         <option [ngValue]="false">No</option>
@@ -56,11 +52,11 @@
     </div>
     <div class="form-group mb-2">
       <label class="col-form-label">Fecha anio</label>
-      <input class="form-control" placeholder="yyyy" type="text" formControlName="fecha_anio">
+      <input class="form-control" placeholder="yyyy" type="text" formControlName="com_fecha_anio">
     </div>
     <div class="form-group mb-2">
       <label class="col-form-label">Fecha Semestre:</label>
-      <select class="form-control" formControlName="fecha_semestre">
+      <select class="form-control" formControlName="com_fecha_semestre">
         <option [ngValue]="null">--Fecha Semestre--</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -68,25 +64,25 @@
     </div>
     <div class="form-group mb-2">
       <label class="col-form-label">Sede</label>
-      <app-fieldset-typeahead [fieldset]="fieldset" [entityName]="'sede'" [fieldName]="'sede'"></app-fieldset-typeahead>
+      <app-fieldset-typeahead [fieldset]="fieldset" [entityName]="'sede'" [fieldName]="'com_sede'"></app-fieldset-typeahead>
     </div>
     <div class="form-group mb-2">
       <label class="col-form-label">Plan:</label>
-      <select class="form-control" formControlName="plan">
+      <select class="form-control" formControlName="com_plan">
         <option [ngValue]="null">--Plan--</option>
         <option *ngFor="let option of (options | async)?.plan" [value]="option.id" >{{option.id | label:"plan"}}</option>
       </select>
     </div>
     <div class="form-group mb-2">
       <label class="col-form-label">Modalidad:</label>
-      <select class="form-control" formControlName="modalidad">
+      <select class="form-control" formControlName="com_modalidad">
         <option [ngValue]="null">--Modalidad--</option>
         <option *ngFor="let option of (options | async)?.modalidad" [value]="option.id" >{{option.id | label:"modalidad"}}</option>
       </select>
     </div>
     <div class="form-group mb-2">
-      <label class="col-form-label">Comision Siguiente</label>
-      <app-fieldset-typeahead [fieldset]="fieldset" [entityName]="'comision'" [fieldName]="'comision_siguiente'"></app-fieldset-typeahead>
-    </div>
+        <label class="col-form-label">Centro Educativo</label>
+        <app-fieldset-typeahead [fieldset]="fieldset" [entityName]="'centro_educativo'" [fieldName]="'com_sed_centro_educativo'"></app-fieldset-typeahead>
+      </div>
   </div>
 </fieldset>
