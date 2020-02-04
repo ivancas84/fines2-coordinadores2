@@ -13,11 +13,16 @@
         </thead>
         <tbody>
           <tr *ngFor="let row of (data$ | async); let i = index">
-              <td><a [routerLink]="['/sede-show']" [queryParams]="{id:row.comision_.sede}" >{{row.comision_.sede | label:'sede'}}</a></td>
-              <td>{{row.comision | label:'comision'}}
+              <td><a [routerLink]="['/sede-show']" [queryParams]="{id:row.sede}" >{{row.sede | label:'sede'}}</a></td>
+              <td>{{row.id | label:'comision'}}
                 <!--br>{{row.comision_.plan_.orientacion}}-->
               </td>
               <td>
+                <ng-template #sincursos>No se han encontrado cursos</ng-template>
+
+                <div *ngIf="(curso_$ | async) ; else sincursos">
+                  con cursos
+                </div>
                 <!--div *ngFor="let curso of (curso_$ | async)[row.id]; let j = index">
                   {{curso.id}}
                 </div-->

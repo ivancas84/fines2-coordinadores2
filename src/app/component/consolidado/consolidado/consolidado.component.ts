@@ -4,6 +4,7 @@ import { DataDefinitionService } from '@service/data-definition/data-definition.
 import { ShowComponent } from '@component/show/show.component';
 import { first } from 'rxjs/operators';
 import { Display } from '@class/display';
+import { isEmptyObject } from '@function/is-empty-object.function';
 
 @Component({
   selector: 'app-consolidado',
@@ -11,7 +12,7 @@ import { Display } from '@class/display';
 })
 export class ConsolidadoComponent extends ShowComponent {
 
-  readonly entityName: string = "curso";
+  readonly entityName: string = "comision";
 
   constructor(
     protected dd: DataDefinitionService, 
@@ -23,8 +24,15 @@ export class ConsolidadoComponent extends ShowComponent {
 
   initDisplay(params){
     this.display = new Display();
-    this.display.setConditionParams(params);
-    if(!this.display.params.hasOwnProperty("com_fecha_anio")) this.display.params["com_fecha_anio"] = "2020";
+    this.display.setByParams(params);
+    if(isEmptyObject(this.display.order)) this.display.order = {
+      "sed_numero":"asc",
+      "anio":"asc",
+      "semestre":"asc",
+    }
+
+    if(!this.display.params.hasOwnProperty("fecha_anio")) this.display.params["fecha_anio"] = "2020";
+    if(!this.display.params.hasOwnProperty("fecha_anio")) this.display.params["fecha_anio"] = "2020";
     this.condition$.next(this.display.condition);
     this.params$.next(this.display.params);
   }

@@ -74,19 +74,19 @@ export class ConsolidadoSearchParamsComponent extends SearchParamsComponent {
 
   formGroup(): FormGroup {
     let fg: FormGroup = this.fb.group({
-      com_turno: null,
-      com_division: null,
-      com_anio: null,
-      com_semestre: null,
-      com_autorizada: null,
-      com_apertura: null,
-      com_publicada: null,
-      com_fecha_anio: null,
-      com_fecha_semestre: null,
-      com_sede: null,
-      com_plan: null,
-      com_modalidad: null,
-      com_sed_centro_educativo: null,
+      turno: null,
+      division: null,
+      anio: null,
+      semestre: null,
+      autorizada: null,
+      apertura: null,
+      publicada: null,
+      fecha_anio: null,
+      fecha_semestre: null,
+      sede: null,
+      plan: null,
+      modalidad: null,
+      sed_centro_educativo: null,
     });
     return fg;
   }
