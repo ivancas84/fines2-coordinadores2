@@ -16,6 +16,7 @@ export class ConsolidadoTableComponent extends TableComponent implements OnInit 
 
   readonly entityName = 'comision';
   curso_$ = {};
+  toma_$ = {};
 
   constructor(protected dd: DataDefinitionService) {
     super();
@@ -25,8 +26,8 @@ export class ConsolidadoTableComponent extends TableComponent implements OnInit 
     this.data$.subscribe(
       data => {
         var ids = arrayColumn(data,"id");
-        ids.forEach(element => {
-          this.curso_$[element] = new BehaviorSubject(null);
+        ids.forEach(id => {
+          this.curso_$[id] = new BehaviorSubject([]);
         });
 
         var display = new Display();
@@ -34,10 +35,34 @@ export class ConsolidadoTableComponent extends TableComponent implements OnInit 
         display.size = 0;
         this.dd.all("curso", display).subscribe(
           curso_ => {
+            var idsCurso = arrayColumn(curso_,"id");
+
             curso_.forEach(element => {
               var v = element["comision"];
-              this.curso_$[v].next(element);
+              var v_ = this.curso_$[v].value;
+              v_.push(element);
+              this.curso_$[v].next(v_);
             });
+
+            var ids = arrayColumn(curso_,"id");
+            ids.forEach(id => {
+              this.toma_$[id] = new BehaviorSubject([]);
+            });
+
+            var display = new Display();
+            display.condition.push("curso","=",ids);
+            display.size = 0;
+            this.dd.all("toma", display).subscribe(
+              toma_ => {
+                toma_.forEach(element => {
+                  var v = element["curso"];
+                  var v_ = this.toma_$[v].value;
+                  v_.push(element);
+                  this.toma_$[v].next(v_);
+                });
+              }
+            );
+
           }
         )
       }

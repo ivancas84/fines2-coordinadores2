@@ -18,10 +18,18 @@
                 <!--br>{{row.comision_.plan_.orientacion}}-->
               </td>
               <td>
-                <ng-template #sincursos>No se han encontrado cursos</ng-template>
+                <ng-template #sincursos>Sin cursos</ng-template>
 
                 <div *ngIf="(curso_$[row.id] | async) ; else sincursos">
-                  con cursos
+                  <ul class="list-group">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let c of (curso_$[row.id] | async); let j = index">
+                      <div class="d-flex w-100 justify-content-between">
+                        <b class="mb-1">{{c.carga_horaria_.asignatura_.nombre}}</b>
+                        <small>{{c.horario}}</small>
+                      </div>
+                      <small>Donec id elit non mi porta.</small>
+                    </div>
+                  </ul>
                 </div>
                 <!--div *ngFor="let curso of (curso_$ | async)[row.id]; let j = index">
                   {{curso.id}}
