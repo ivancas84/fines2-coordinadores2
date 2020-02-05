@@ -20,7 +20,7 @@
               <td>
                 <ng-template #sincursos>No se han encontrado cursos</ng-template>
 
-                <div *ngIf="(curso_$ | async) ; else sincursos">
+                <div *ngIf="(curso_$[row.id] | async) ; else sincursos">
                   con cursos
                 </div>
                 <!--div *ngFor="let curso of (curso_$ | async)[row.id]; let j = index">
