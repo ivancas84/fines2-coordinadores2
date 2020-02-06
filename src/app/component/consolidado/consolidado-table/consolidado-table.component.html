@@ -27,7 +27,14 @@
                         <b class="mb-1">{{c.carga_horaria_.asignatura_.nombre}}</b>
                         <small>{{c.horario}}</small>
                       </div>
-                      <small>Donec id elit non mi porta.</small>
+                      <ng-template #sintomas><small>Sin Tomas</small></ng-template>
+                      
+                      <div *ngIf="(toma_$[c.id] | async) && (toma_$[c.id] | async).length; else sintomas">                    
+                        <div *ngFor="let t of (toma_$[c.id] | async); let k = index">
+                          <small *ngIf="t.docente_">{{t.docente_.apellidos}} {{t.docente_.nombres}}</small>
+                          <small *ngIf="t.observaciones">({{t.observaciones}})</small>                                                                 
+                        </div>
+                      </div>
                     </div>
                   </ul>
                 </div>
