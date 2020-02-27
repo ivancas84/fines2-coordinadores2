@@ -38,8 +38,6 @@ export class ConsolidadoComponent extends ShowComponent {
     if(!this.display.params.hasOwnProperty("sed_centro_educativo")) this.display.params["sed_centro_educativo"] = "1";
     if(!this.display.params.hasOwnProperty("autorizada")) this.display.params["autorizada"] = "true";
 
-
-    //if(!this.display.params.hasOwnProperty("fecha_anio")) this.display.params["fecha_anio"] = "2020";
     this.condition$.next(this.display.condition);
     this.params$.next(this.display.params);
   }
