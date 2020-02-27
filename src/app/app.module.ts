@@ -48,6 +48,8 @@ import { ConsolidadoComponent } from '@component/consolidado/consolidado/consoli
 import { ConsolidadoTableComponent } from '@component/consolidado/consolidado-table/consolidado-table.component';
 import { ConsolidadoSearchComponent } from '@component/consolidado/consolidado-search/consolidado-search/consolidado-search.component';
 import { ConsolidadoSearchParamsComponent } from '@component/consolidado/consolidado-search/consolidado-search-params/consolidado-search-params.component';
+import { GrillaSearchComponent } from '@component/grilla-search/grilla-search/grilla-search.component';
+import { GrillaSearchParamsComponent } from '@component/grilla-search/grilla-search-params/grilla-search-params.component';
 
 @NgModule({
   declarations: [
@@ -60,8 +62,8 @@ import { ConsolidadoSearchParamsComponent } from '@component/consolidado/consoli
     FilterTypeaheadComponent, FieldsetTypeaheadComponent,
     ModalConfirmComponent,
     ToastsComponent,
-
     ConsolidadoComponent, ConsolidadoTableComponent, ConsolidadoSearchComponent, ConsolidadoSearchParamsComponent,
+    GrillaSearchComponent, GrillaSearchParamsComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule,

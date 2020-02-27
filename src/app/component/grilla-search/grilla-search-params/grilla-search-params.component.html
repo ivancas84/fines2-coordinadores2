@@ -1,0 +1,35 @@
+<fieldset [formGroup]="fieldset">
+  <div class="form-inline">
+    <div class="form-group mb-2">
+      <label class="col-form-label">Publicada</label>
+      <select class="form-control" formControlName="publicada">
+        <option [ngValue]="null">--Todos--</option>
+        <option [ngValue]="'true'">Sí</option>
+        <option [ngValue]="'false'">No</option>
+      </select>
+    </div>
+    <div class="form-group mb-2">
+      <label class="col-form-label">Fecha anio</label>
+      <input class="form-control" placeholder="yyyy" type="text" formControlName="fecha_anio">
+    </div>
+    <div class="form-group mb-2">
+      <label class="col-form-label">Fecha Semestre:</label>
+      <select class="form-control" formControlName="fecha_semestre">
+        <option [ngValue]="null">--Fecha Semestre--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+      </select>
+    </div>
+    <div class="form-group mb-2">
+      <label class="col-form-label">Modalidad:</label>
+      <select class="form-control" formControlName="modalidad">
+        <option [ngValue]="null">--Modalidad--</option>
+        <option *ngFor="let option of (options | async)?.modalidad" [value]="option.id" >{{option.id | label:"modalidad"}}</option>
+      </select>
+    </div>
+    <div class="form-group mb-2">
+        <label class="col-form-label">Centro Educativo</label>
+        <app-fieldset-typeahead [fieldset]="fieldset" [entityName]="'centro_educativo'" [fieldName]="'sed_centro_educativo'"></app-fieldset-typeahead>
+      </div>
+  </div>
+</fieldset>
