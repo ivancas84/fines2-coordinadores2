@@ -43,10 +43,8 @@ export class ConsolidadoSearchParamsComponent extends SearchParamsComponent {
   }
 
   initData(): void {
-    this.data$.subscribe(
+    this.params$.subscribe(
       response => {
-        this.setDefaultValues();
-
         if(!isEmptyObject(response)) {
           var obs = [];
 
