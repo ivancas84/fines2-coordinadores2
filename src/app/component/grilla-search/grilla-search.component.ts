@@ -6,6 +6,7 @@ import { Subject, ReplaySubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { isEmptyObject } from '@function/is-empty-object.function';
 import { getSemester } from '@function/get-semester';
+import { WEB_INFO } from 'src/app/app.config';
 
 @Component({
   selector: 'app-grilla-search',
@@ -56,7 +57,7 @@ export class GrillaSearchComponent {
     if(!this.display.params.hasOwnProperty("fecha_anio")) this.display.params["fecha_anio"] = new Date().getFullYear();
     if(!this.display.params.hasOwnProperty("fecha_semestre")) this.display.params["fecha_semestre"] = getSemester();
     if(!this.display.params.hasOwnProperty("sed_centro_educativo")) this.display.params["sed_centro_educativo"] = "1";
-    if(!this.display.params.hasOwnProperty("autorizada")) this.display.params["autorizada"] = "true";
+    if(!this.display.params.hasOwnProperty("modalidad")) this.display.params["modalidad"] = "1";
 
     this.params$.next(this.display.params);
   }
@@ -64,7 +65,7 @@ export class GrillaSearchComponent {
   onSubmit(): void { 
     this.display.condition = [];
     this.display.setParams(this.searchForm.value);
-    window.open("http://localhost/fines2-info/grillaSadCompleta/?" + this.display.encodeURI().join("&"), "_blank");
+    window.open(WEB_INFO + "grillaSadCompleta/?" + this.display.encodeURI().join("&"), "_blank");
 
     //this.router.navigateByUrl('/' + emptyUrl(this.router.url) + '?' + this.display.encodeURI().join("&"));
     //console.log(    this.display.encodeURI().join("&"));

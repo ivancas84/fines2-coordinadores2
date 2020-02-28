@@ -6,5 +6,9 @@ export const HTTP_OPTIONS = {
     })
 };
 
-//export const API_ROOT = 'http://planfines2.com.ar/main/api/';
-export const API_ROOT = 'http://localhost/fines2-estructura/api/';  
+
+export const API_ROOT = 'http://planfines2.com.ar/api/';
+//export const API_ROOT = 'http://localhost/fines2-estructura/api/';  
+export const WEB_INFO = 'http://planfines2.com.ar/info/';
+//export const WEB_INFO = 'http://localhost/fines2-info/';
+

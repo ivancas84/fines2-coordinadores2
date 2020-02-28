@@ -48,8 +48,9 @@ import { ConsolidadoComponent } from '@component/consolidado/consolidado/consoli
 import { ConsolidadoTableComponent } from '@component/consolidado/consolidado-table/consolidado-table.component';
 import { ConsolidadoSearchComponent } from '@component/consolidado/consolidado-search/consolidado-search/consolidado-search.component';
 import { ConsolidadoSearchParamsComponent } from '@component/consolidado/consolidado-search/consolidado-search-params/consolidado-search-params.component';
-import { GrillaSearchComponent } from '@component/grilla-search/grilla-search/grilla-search.component';
-import { GrillaSearchParamsComponent } from '@component/grilla-search/grilla-search-params/grilla-search-params.component';
+import { GrillaSearchComponent } from '@component/grilla-search/grilla-search.component';
+import { GrupoSearchParamsComponent } from '@component/_grupo-search-params/grupo-search-params.component';
+import { ModalAlertComponent } from '@component/modal-alert/modal-alert.component';
 
 @NgModule({
   declarations: [
@@ -60,10 +61,10 @@ import { GrillaSearchParamsComponent } from '@component/grilla-search/grilla-sea
     PaginationComponent,
     MessagesComponent,
     FilterTypeaheadComponent, FieldsetTypeaheadComponent,
-    ModalConfirmComponent,
+    ModalAlertComponent, ModalConfirmComponent,
     ToastsComponent,
     ConsolidadoComponent, ConsolidadoTableComponent, ConsolidadoSearchComponent, ConsolidadoSearchParamsComponent,
-    GrillaSearchComponent, GrillaSearchParamsComponent
+    GrillaSearchComponent, GrupoSearchParamsComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule,

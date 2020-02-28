@@ -9,10 +9,10 @@ import { Display } from '@class/display';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-grilla-search-params',
-  templateUrl: './grilla-search-params.component.html',
+  selector: 'app-grupo-search-params',
+  templateUrl: './grupo-search-params.component.html',
 })
-export class GrillaSearchParamsComponent extends SearchParamsComponent {
+export class GrupoSearchParamsComponent extends SearchParamsComponent {
 
   constructor(
     protected fb: FormBuilder, 

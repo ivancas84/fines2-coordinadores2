@@ -25,7 +25,7 @@ export class ConsolidadoTableComponent extends TableComponent implements OnInit 
   ngOnInit(): void {
     this.data$.subscribe(
       data => {
-        if(data.length){
+        if(data && data.length){
           var ids = arrayColumn(data,"id");
           ids.forEach(id => {
             this.curso_$[id] = new BehaviorSubject([]);
@@ -69,6 +69,18 @@ export class ConsolidadoTableComponent extends TableComponent implements OnInit 
         }
       }
     );
+  }
+
+
+  toma(idcurso){
+  /**
+   * Se define un metodo para evitar el error de pasaje a produccion: Object is possibly 'null'
+   */
+    var t;
+    this.toma_$[idcurso].subscribe(
+      toma => { t = toma; }
+    );
+    return t;
   }
 
 

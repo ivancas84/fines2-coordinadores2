@@ -1,14 +1,6 @@
 <fieldset [formGroup]="fieldset">
   <div class="form-inline">
     <div class="form-group mb-2">
-      <label class="col-form-label">Publicada</label>
-      <select class="form-control" formControlName="publicada">
-        <option [ngValue]="null">--Todos--</option>
-        <option [ngValue]="'true'">Sí</option>
-        <option [ngValue]="'false'">No</option>
-      </select>
-    </div>
-    <div class="form-group mb-2">
       <label class="col-form-label">Fecha anio</label>
       <input class="form-control" placeholder="yyyy" type="text" formControlName="fecha_anio">
     </div>
