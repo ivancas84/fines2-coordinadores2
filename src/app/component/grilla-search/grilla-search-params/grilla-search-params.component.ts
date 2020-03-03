@@ -9,10 +9,10 @@ import { Display } from '@class/display';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-grupo-search-params',
-  templateUrl: './grupo-search-params.component.html',
+  selector: 'app-grilla-search-params',
+  templateUrl: './grilla-search-params.component.html',
 })
-export class GrupoSearchParamsComponent extends SearchParamsComponent {
+export class GrillaSearchParamsComponent extends SearchParamsComponent {
 
   constructor(
     protected fb: FormBuilder, 
@@ -71,11 +71,11 @@ export class GrupoSearchParamsComponent extends SearchParamsComponent {
 
   formGroup(): FormGroup {
     let fg: FormGroup = this.fb.group({
-      publicada: null,
-      fecha_anio: null,
-      fecha_semestre: null,
-      modalidad: null,
-      sed_centro_educativo: null,
+      com_publicada: null,
+      com_fecha_anio: null,
+      com_fecha_semestre: null,
+      com_modalidad: null,
+      com_sed_centro_educativo: null,
     });
     return fg;
   }

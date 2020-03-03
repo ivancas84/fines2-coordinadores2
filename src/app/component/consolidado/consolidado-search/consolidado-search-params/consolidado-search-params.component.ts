@@ -19,7 +19,26 @@ export class ConsolidadoSearchParamsComponent extends SearchParamsComponent {
     protected fb: FormBuilder, 
     protected dd: DataDefinitionService, 
     protected validators: ValidatorsService) 
-  { super(fb, dd, validators); }
+  {
+    super(fb, dd, validators); 
+  
+  }
+
+
+  logFechaAnio() {
+    const fechaAnioControl = this.fieldset.get('fecha_anio');
+    fechaAnioControl.valueChanges.forEach(
+      (value: string) => console.log(value)
+    );
+  }
+
+  initForm(): void{
+    this.fieldset = this.formGroup();
+    this.form.addControl("params", this.fieldset);
+    this.logFechaAnio();
+
+  }
+
 
   initOptions(): void {
     let obs = [];      
