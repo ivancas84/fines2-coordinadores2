@@ -7,12 +7,13 @@ import { Display } from '@class/display';
 import { arrayGroupValue } from '@function/array-group-value';
 import { arrayColumn } from '@function/array-column';
 import { map, mergeMap, switchMap } from 'rxjs/operators';
+import { ShowElementComponent } from '@component/show-element/show-element.component';
 
 @Component({
   selector: 'app-consolidado-table',
   templateUrl: './consolidado-table.component.html',
 })
-export class ConsolidadoTableComponent extends TableComponent implements OnInit {
+export class ConsolidadoTableComponent extends ShowElementComponent implements OnInit {
 
   readonly entityName = 'comision';
   curso_$ = {};
@@ -36,8 +37,6 @@ export class ConsolidadoTableComponent extends TableComponent implements OnInit 
           display.size = 0;
           this.dd.all("curso", display).subscribe(
             curso_ => {
-              var idsCurso = arrayColumn(curso_,"id");
-
               curso_.forEach(element => {
                 var v = element["comision"];
                 var v_ = this.curso_$[v].value;
@@ -70,7 +69,6 @@ export class ConsolidadoTableComponent extends TableComponent implements OnInit 
       }
     );
   }
-
 
   toma(idcurso){
   /**
