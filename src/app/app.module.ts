@@ -4,16 +4,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { 
+  NgbModule,
   NgbDateAdapter, 
-  NgbTimeAdapter,
-  NgbCollapseModule, 
-  NgbDropdownModule,
-  NgbPaginationModule,
-  NgbAccordionModule,
-  NgbTypeaheadModule,
-  NgbToastModule,
+  // NgbCollapseModule, 
+  // NgbDropdownModule,
+  // NgbPaginationModule,
+  // NgbAccordionModule,
+  // NgbTypeaheadModule,
+  // NgbToastModule,
   NgbDatepickerModule,
   NgbDateParserFormatter,
+  // NgbTimepickerModule,
+  NgbTimeAdapter,
 } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +23,7 @@ import { AppComponent } from './app.component';
 
 import { LabelPipe } from '@pipe/label.pipe';
 import { ToDatePipe } from '@pipe/to-date.pipe';
+import { ToTimePipe } from '@pipe/to-time.pipe';
 import { SiNoPipe } from '@pipe/si-no.pipe';
 import { StoragePipe } from '@pipe/storage.pipe';
 import { SummaryPipe } from '@pipe/summary.pipe';
@@ -37,9 +40,11 @@ import { SessionStorageService } from '@service/storage/session-storage.service'
 import { ToastService } from '@service/ng-bootstrap/toast.service';
 import { ValidatorsService } from '@service/validators/validators.service';
 import { NgbIsoDateAdapter } from '@service/ng-bootstrap/ngb-iso-date-adapter';
-import { NgbStringTimeAdapter } from '@service/ng-bootstrap/ngb-string-time-adapter';
 import { NgbDateCustomParserFormatter } from '@service/ng-bootstrap/dateformat';
 import { ParserService } from '@service/parser/parser.service';
+import { UploadComponent } from '@component/upload/upload.component';
+import { DownloadComponent } from '@component/download/download.component';
+import { NgbStringTimeAdapter } from '@service/ng-bootstrap/ngb-string-time-adapter';
 
 import { DataDefinitionLoaderService } from '@service/data-definition-loader.service';
 import { MenuComponent } from '@component/menu/menu.component';
@@ -50,26 +55,29 @@ import { ConsolidadoSearchComponent } from '@component/consolidado/consolidado-s
 import { ConsolidadoSearchParamsComponent } from '@component/consolidado/consolidado-search/consolidado-search-params/consolidado-search-params.component';
 import { GrillaSearchComponent } from '@component/grilla-search/grilla-search/grilla-search.component';
 import { GrillaSearchParamsComponent } from '@component/grilla-search/grilla-search-params/grilla-search-params.component';
-import { ModalAlertComponent } from '@component/modal-alert/modal-alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    LabelPipe, ToDatePipe, SiNoPipe, SummaryPipe, StoragePipe,
+    LabelPipe, ToDatePipe, ToTimePipe, SiNoPipe, SummaryPipe, StoragePipe,
     SearchAllComponent,
     PaginationComponent,
     MessagesComponent,
     FilterTypeaheadComponent, FieldsetTypeaheadComponent,
-    ModalAlertComponent, ModalConfirmComponent,
+    ModalConfirmComponent,
     ToastsComponent,
+    UploadComponent,
+    DownloadComponent,
+
     ConsolidadoComponent, ConsolidadoTableComponent, ConsolidadoSearchComponent, ConsolidadoSearchParamsComponent,
     GrillaSearchComponent, GrillaSearchParamsComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule,
     ReactiveFormsModule,
-    NgbToastModule, NgbCollapseModule, NgbDropdownModule, NgbPaginationModule, NgbAccordionModule, NgbTypeaheadModule, NgbDatepickerModule
+    NgbModule
+    //NgbToastModule, NgbCollapseModule, NgbDropdownModule, NgbPaginationModule, NgbAccordionModule, NgbTypeaheadModule, NgbDatepickerModule, NgbTimepickerModule
   ],
   providers: [
     MessageService, DataDefinitionService, DataDefinitionLoaderService, SessionStorageService, ParserService, 

@@ -6,7 +6,10 @@ export class _ComisionDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    var rowCloned = Object.assign({}, row)
+    var rowCloned = JSON.parse(JSON.stringify(row))
+    /**
+     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
+     */
     if(('sede_' in rowCloned)
     && ('domicilio_' in rowCloned['sede_'])
     ){
@@ -135,8 +138,6 @@ export class _ComisionDataDefinition extends DataDefinition {
     if(!row) return null;
 
     let ret = "";
-    if (row["division"]) ret = ret.trim() + " " + row["division"];
-
     if (row["anio"]) ret = ret.trim() + " " + row["anio"];
 
     if (row["semestre"]) ret = ret.trim() + " " + row["semestre"];

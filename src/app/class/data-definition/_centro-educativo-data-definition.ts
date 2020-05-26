@@ -5,7 +5,10 @@ export class _CentroEducativoDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    var rowCloned = Object.assign({}, row)
+    var rowCloned = JSON.parse(JSON.stringify(row))
+    /**
+     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
+     */
     if(('domicilio_' in rowCloned)
     ){
       this.stg.setItem('domicilio' + rowCloned['domicilio_'].id, rowCloned['domicilio_']);

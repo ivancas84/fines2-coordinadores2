@@ -5,7 +5,10 @@ export class _TomaDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    var rowCloned = Object.assign({}, row)
+    var rowCloned = JSON.parse(JSON.stringify(row))
+    /**
+     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
+     */
     if(('curso_' in rowCloned)
     && ('comision_' in rowCloned['curso_'])
     && ('sede_' in rowCloned['curso_']['comision_'])
@@ -171,24 +174,10 @@ export class _TomaDataDefinition extends DataDefinition {
       delete rowCloned['curso_']['comision_'];
     }
     if(('curso_' in rowCloned)
-    && ('carga_horaria_' in rowCloned['curso_'])
-    && ('plan_' in rowCloned['curso_']['carga_horaria_'])
+    && ('asignatura_' in rowCloned['curso_'])
     ){
-      this.stg.setItem('plan' + rowCloned['curso_']['carga_horaria_']['plan_'].id, rowCloned['curso_']['carga_horaria_']['plan_']);
-      delete rowCloned['curso_']['carga_horaria_']['plan_'];
-    }
-    if(('curso_' in rowCloned)
-    && ('carga_horaria_' in rowCloned['curso_'])
-    && ('asignatura_' in rowCloned['curso_']['carga_horaria_'])
-    ){
-      this.stg.setItem('asignatura' + rowCloned['curso_']['carga_horaria_']['asignatura_'].id, rowCloned['curso_']['carga_horaria_']['asignatura_']);
-      delete rowCloned['curso_']['carga_horaria_']['asignatura_'];
-    }
-    if(('curso_' in rowCloned)
-    && ('carga_horaria_' in rowCloned['curso_'])
-    ){
-      this.stg.setItem('carga_horaria' + rowCloned['curso_']['carga_horaria_'].id, rowCloned['curso_']['carga_horaria_']);
-      delete rowCloned['curso_']['carga_horaria_'];
+      this.stg.setItem('asignatura' + rowCloned['curso_']['asignatura_'].id, rowCloned['curso_']['asignatura_']);
+      delete rowCloned['curso_']['asignatura_'];
     }
     if(('curso_' in rowCloned)
     ){

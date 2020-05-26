@@ -5,7 +5,10 @@ export class _PlanDataDefinition extends DataDefinition {
 
   storage(row: { [index: string]: any }){
     if(!row) return;
-    var rowCloned = Object.assign({}, row)
+    var rowCloned = JSON.parse(JSON.stringify(row))
+    /**
+     * se realiza un 'deep clone' del objeto para poder eliminar atributos a medida que se procesa y no alterar la referencia original
+     */
     this.stg.setItem("plan" + rowCloned.id, rowCloned);
   }
 
@@ -16,7 +19,7 @@ export class _PlanDataDefinition extends DataDefinition {
     let ret = "";
     if (row["orientacion"]) ret = ret.trim() + " " + row["orientacion"];
 
-    if (row["resolucion"]) ret = ret.trim() + " " + row["resolucion"];
+    if (row["distribucion_horaria"]) ret = ret.trim() + " " + row["distribucion_horaria"];
 
     return ret.trim();
   }
