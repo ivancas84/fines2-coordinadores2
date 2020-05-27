@@ -26,22 +26,16 @@ export class ConsolidadoComponent extends ShowComponent {
 
   initDisplay(params){
     this.display = new Display();
-    this.display.setByParams(params);
-    if(isEmptyObject(this.display.order)) this.display.order = {
-      "sed_numero":"asc",
-      "anio":"asc",
-      "semestre":"asc",
-    }
-
-    if(!this.display.params.hasOwnProperty("fecha_anio")) this.display.params["fecha_anio"] = new Date().getFullYear();
-    if(!this.display.params.hasOwnProperty("fecha_semestre")) this.display.params["fecha_semestre"] = getSemester();
-    if(!this.display.params.hasOwnProperty("sed_centro_educativo")) this.display.params["sed_centro_educativo"] = "1";
-    if(!this.display.params.hasOwnProperty("autorizada")) this.display.params["autorizada"] = "true";
-    if(!this.display.params.hasOwnProperty("modalidad")) this.display.params["modalidad"] = "1";
-
-
-    this.condition$.next(this.display.condition);
-    this.params$.next(this.display.params);
+    this.display.setConditionByQueryParams(params);
+    if(isEmptyObject(this.display.getOrder())) 
+      this.display.setOrder({"sed_numero":"asc", "anio":"asc", "semestre":"asc"});
+    this.display.addParamIfNot("autorizada", "true");
+    this.display.addParamIfNot("fecha_anio", new Date().getFullYear());
+    this.display.addParamIfNot("fecha_semestre", getSemester());
+    this.display.addParamIfNot("sed_centro_educativo", "1");
+    this.display.addParamIfNot("modalidad", "1");  
+    this.condition$.next(this.display.getCondition());
+    this.params$.next(this.display.getParams());
   }
 
   

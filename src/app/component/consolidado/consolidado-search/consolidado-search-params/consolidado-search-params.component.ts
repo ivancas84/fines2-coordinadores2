@@ -4,7 +4,7 @@ import { DataDefinitionService } from '@service/data-definition/data-definition.
 import { isEmptyObject } from '@function/is-empty-object.function';
 import { ValidatorsService } from '@service/validators/validators.service';
 import { SearchParamsComponent } from '@component/search-params/search-params.component';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { Display } from '@class/display';
 import { map } from 'rxjs/operators';
 
@@ -14,6 +14,9 @@ import { map } from 'rxjs/operators';
 })
 export class ConsolidadoSearchParamsComponent extends SearchParamsComponent {
   readonly entityName = 'comision';
+  optPlan$: Observable<any>;
+  optModalidad$: Observable<any>;
+  optCentroEducativo$: Observable<any>;
 
   constructor(
     protected fb: FormBuilder, 
@@ -24,73 +27,15 @@ export class ConsolidadoSearchParamsComponent extends SearchParamsComponent {
   
   }
 
-
-  logFechaAnio() {
-    const fechaAnioControl = this.fieldset.get('fecha_anio');
-    fechaAnioControl.valueChanges.forEach(
-      (value: string) => console.log(value)
-    );
-  }
-
-  initForm(): void{
-    this.fieldset = this.formGroup();
-    this.form.addControl("params", this.fieldset);
-    this.logFechaAnio();
-
-  }
-
-
   initOptions(): void {
-    let obs = [];      
-
-    var ob = this.dd.all('plan', new Display);
-    obs.push(ob);
-
-    var ob = this.dd.all('modalidad', new Display);
-    obs.push(ob);
-
-    this.options = forkJoin(obs).pipe(
-      map(
-        options => {
-          var o = {};
-          o['plan'] = options[0];
-          o['modalidad'] = options[1];
-          return o;
-        }
-      )
-    );
-  }
-
-  initData(): void {
-    this.params$.subscribe(
-      response => {
-        if(!isEmptyObject(response)) {
-          var obs = [];
-
-          if(response.sede) {
-            var ob = this.dd.getOrNull("sede",response.sede);
-            obs.push(ob);
-          }
-
-          if(response.comision_siguiente) {
-            var ob = this.dd.getOrNull("comision",response.comision_siguiente);
-            obs.push(ob);
-          }
-
-          if(response.sed_centro_educativo) {
-            var ob = this.dd.getOrNull("centro_educativo",response.sed_centro_educativo);
-            obs.push(ob);
-          }
-
-          if(obs.length){ forkJoin(obs).subscribe( () => this.fieldset.reset(response) ); } 
-          else { this.fieldset.reset(response); }
-        }
-      }
-    );
+    this.optPlan$ = this.dd.all('plan', new Display);
+    this.optModalidad$ = this.dd.all('modalidad', new Display);
+    this.optCentroEducativo$ = this.dd.all('centro_educativo', new Display);
   }
 
   formGroup(): FormGroup {
     let fg: FormGroup = this.fb.group({
+      sed_numero_trim: null,
       turno: null,
       division: null,
       anio: null,
