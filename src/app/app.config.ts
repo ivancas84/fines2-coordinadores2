@@ -8,4 +8,4 @@ export const HTTP_OPTIONS = {
 
 //export const API_URL = 'http://planfines2.com.ar/api/';
 export const UPLOAD_URL = 'http://localhost/upload/';
-export const API_URL = 'http://localhost/fines2-estructura/api/';
+export const API_URL = 'http://planfines2.com.ar/api/';
