@@ -7,7 +7,8 @@ export class ComisionDataDefinition extends _ComisionDataDefinition {
         if(!comision) return null;
         var sede = this.stg.getItem("sede" + comision.sede);
         if(!sede) return null;
-        var ret = sede["numero"]+ comision["division"] + comision["anio"] + comision["semestre"];
+        var planificacion = this.stg.getItem("planificacion" + comision.planificacion);
+        var ret = sede["numero"]+ comision["division"] + planificacion["anio"] + planificacion["semestre"];
         return ret.trim();
     }
 

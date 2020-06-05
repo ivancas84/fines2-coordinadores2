@@ -53,82 +53,26 @@ export class _ComisionDataDefinition extends DataDefinition {
       this.stg.setItem('sede' + rowCloned['sede_'].id, rowCloned['sede_']);
       delete rowCloned['sede_'];
     }
-    if(('plan_' in rowCloned)
-    ){
-      this.stg.setItem('plan' + rowCloned['plan_'].id, rowCloned['plan_']);
-      delete rowCloned['plan_'];
-    }
     if(('modalidad_' in rowCloned)
     ){
       this.stg.setItem('modalidad' + rowCloned['modalidad_'].id, rowCloned['modalidad_']);
       delete rowCloned['modalidad_'];
     }
-    if(('comision_siguiente_' in rowCloned)
-    && ('sede_' in rowCloned['comision_siguiente_'])
-    && ('domicilio_' in rowCloned['comision_siguiente_']['sede_'])
+    if(('planificacion_' in rowCloned)
+    && ('plan_' in rowCloned['planificacion_'])
     ){
-      this.stg.setItem('domicilio' + rowCloned['comision_siguiente_']['sede_']['domicilio_'].id, rowCloned['comision_siguiente_']['sede_']['domicilio_']);
-      delete rowCloned['comision_siguiente_']['sede_']['domicilio_'];
+      this.stg.setItem('plan' + rowCloned['planificacion_']['plan_'].id, rowCloned['planificacion_']['plan_']);
+      delete rowCloned['planificacion_']['plan_'];
     }
-    if(('comision_siguiente_' in rowCloned)
-    && ('sede_' in rowCloned['comision_siguiente_'])
-    && ('tipo_sede_' in rowCloned['comision_siguiente_']['sede_'])
+    if(('planificacion_' in rowCloned)
     ){
-      this.stg.setItem('tipo_sede' + rowCloned['comision_siguiente_']['sede_']['tipo_sede_'].id, rowCloned['comision_siguiente_']['sede_']['tipo_sede_']);
-      delete rowCloned['comision_siguiente_']['sede_']['tipo_sede_'];
+      this.stg.setItem('planificacion' + rowCloned['planificacion_'].id, rowCloned['planificacion_']);
+      delete rowCloned['planificacion_'];
     }
-    if(('comision_siguiente_' in rowCloned)
-    && ('sede_' in rowCloned['comision_siguiente_'])
-    && ('centro_educativo_' in rowCloned['comision_siguiente_']['sede_'])
-    && ('domicilio_' in rowCloned['comision_siguiente_']['sede_']['centro_educativo_'])
+    if(('calendario_' in rowCloned)
     ){
-      this.stg.setItem('domicilio' + rowCloned['comision_siguiente_']['sede_']['centro_educativo_']['domicilio_'].id, rowCloned['comision_siguiente_']['sede_']['centro_educativo_']['domicilio_']);
-      delete rowCloned['comision_siguiente_']['sede_']['centro_educativo_']['domicilio_'];
-    }
-    if(('comision_siguiente_' in rowCloned)
-    && ('sede_' in rowCloned['comision_siguiente_'])
-    && ('centro_educativo_' in rowCloned['comision_siguiente_']['sede_'])
-    ){
-      this.stg.setItem('centro_educativo' + rowCloned['comision_siguiente_']['sede_']['centro_educativo_'].id, rowCloned['comision_siguiente_']['sede_']['centro_educativo_']);
-      delete rowCloned['comision_siguiente_']['sede_']['centro_educativo_'];
-    }
-    if(('comision_siguiente_' in rowCloned)
-    && ('sede_' in rowCloned['comision_siguiente_'])
-    && ('coordinador_' in rowCloned['comision_siguiente_']['sede_'])
-    && ('domicilio_' in rowCloned['comision_siguiente_']['sede_']['coordinador_'])
-    ){
-      this.stg.setItem('domicilio' + rowCloned['comision_siguiente_']['sede_']['coordinador_']['domicilio_'].id, rowCloned['comision_siguiente_']['sede_']['coordinador_']['domicilio_']);
-      delete rowCloned['comision_siguiente_']['sede_']['coordinador_']['domicilio_'];
-    }
-    if(('comision_siguiente_' in rowCloned)
-    && ('sede_' in rowCloned['comision_siguiente_'])
-    && ('coordinador_' in rowCloned['comision_siguiente_']['sede_'])
-    ){
-      this.stg.setItem('persona' + rowCloned['comision_siguiente_']['sede_']['coordinador_'].id, rowCloned['comision_siguiente_']['sede_']['coordinador_']);
-      delete rowCloned['comision_siguiente_']['sede_']['coordinador_'];
-    }
-    if(('comision_siguiente_' in rowCloned)
-    && ('sede_' in rowCloned['comision_siguiente_'])
-    ){
-      this.stg.setItem('sede' + rowCloned['comision_siguiente_']['sede_'].id, rowCloned['comision_siguiente_']['sede_']);
-      delete rowCloned['comision_siguiente_']['sede_'];
-    }
-    if(('comision_siguiente_' in rowCloned)
-    && ('plan_' in rowCloned['comision_siguiente_'])
-    ){
-      this.stg.setItem('plan' + rowCloned['comision_siguiente_']['plan_'].id, rowCloned['comision_siguiente_']['plan_']);
-      delete rowCloned['comision_siguiente_']['plan_'];
-    }
-    if(('comision_siguiente_' in rowCloned)
-    && ('modalidad_' in rowCloned['comision_siguiente_'])
-    ){
-      this.stg.setItem('modalidad' + rowCloned['comision_siguiente_']['modalidad_'].id, rowCloned['comision_siguiente_']['modalidad_']);
-      delete rowCloned['comision_siguiente_']['modalidad_'];
-    }
-    if(('comision_siguiente_' in rowCloned)
-    ){
-      this.stg.setItem('comision' + rowCloned['comision_siguiente_'].id, rowCloned['comision_siguiente_']);
-      delete rowCloned['comision_siguiente_'];
+      this.stg.setItem('calendario' + rowCloned['calendario_'].id, rowCloned['calendario_']);
+      delete rowCloned['calendario_'];
     }
     this.stg.setItem("comision" + rowCloned.id, rowCloned);
   }
@@ -138,10 +82,6 @@ export class _ComisionDataDefinition extends DataDefinition {
     if(!row) return null;
 
     let ret = "";
-    if (row["anio"]) ret = ret.trim() + " " + row["anio"];
-
-    if (row["semestre"]) ret = ret.trim() + " " + row["semestre"];
-
     if(row.sede) {
       var e = new SedeDataDefinition(this.stg, this.parser);
       ret = ret.trim() + " " + e.label(row.sede);

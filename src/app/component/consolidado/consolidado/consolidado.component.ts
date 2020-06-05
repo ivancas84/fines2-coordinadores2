@@ -28,10 +28,10 @@ export class ConsolidadoComponent extends ShowComponent {
     this.display = new Display();
     this.display.setConditionByQueryParams(params);
     if(isEmptyObject(this.display.getOrder())) 
-      this.display.setOrder({"sed_numero":"asc", "anio":"asc", "semestre":"asc"});
+      this.display.setOrder({"sed_numero":"asc", "pla_anio":"asc", "pla_semestre":"asc"});
     this.display.addParamIfNot("autorizada", "true");
-    this.display.addParamIfNot("fecha_anio", new Date().getFullYear());
-    this.display.addParamIfNot("fecha_semestre", getSemester());
+    this.display.addParamIfNot("cal_anio", new Date().getFullYear());
+    this.display.addParamIfNot("cal_semestre", getSemester());
     this.display.addParamIfNot("sed_centro_educativo", "1");
     this.display.addParamIfNot("modalidad", "1");  
     this.condition$.next(this.display.getCondition());
