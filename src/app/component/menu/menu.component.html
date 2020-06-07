@@ -12,7 +12,7 @@
       <div class="nav-item dropdown" ngbDropdown >
         <a class="nav-link dropdown-toggle" id="dropdownVer" ngbDropdownToggle>Ver</a>
         <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownVer">
-          <a class="dropdown-item" routerLink="/consolidado" routerLinkActive="active" title="Consolidado" (click)="toggleMenu()">Consolidado</a>
+          <a class="dropdown-item" routerLink="/consolidado" [queryParams]="{'cal_anio':year, 'cal_semestre':semester, 'sed_centro_educativo':1, 'modalidad':1, 'autorizada':'true'}" routerLinkActive="active" title="Consolidado" (click)="toggleMenu()">Consolidado</a>
         </div>
       </div>  
       
