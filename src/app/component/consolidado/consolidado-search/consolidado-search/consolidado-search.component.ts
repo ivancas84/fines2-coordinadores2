@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
   templateUrl: './consolidado-search.component.html',
 })
 export class ConsolidadoSearchComponent extends SearchComponent {
+  
   constructor(
     protected fb: FormBuilder,
-    protected dd: DataDefinitionService, 
     protected router: Router,
   ) {
-    super(fb, dd, router);
+    super(fb, router);
   }
 
 }
