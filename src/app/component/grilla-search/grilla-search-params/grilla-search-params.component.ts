@@ -4,7 +4,7 @@ import { DataDefinitionService } from '@service/data-definition/data-definition.
 import { isEmptyObject } from '@function/is-empty-object.function';
 import { ValidatorsService } from '@service/validators/validators.service';
 import { SearchParamsComponent } from '@component/search-params/search-params.component';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { Display } from '@class/display';
 import { map } from 'rxjs/operators';
 
@@ -20,25 +20,13 @@ export class GrillaSearchParamsComponent extends SearchParamsComponent {
     protected validators: ValidatorsService) 
   { super(fb, dd, validators); }
 
+  optPlan$: Observable<{[key:string]: any}>;
+  optModalidad$: Observable<{[key:string]: any}>;
+
+
   initOptions(): void {
-    let obs = [];      
-
-    var ob = this.dd.all('plan', new Display);
-    obs.push(ob);
-
-    var ob = this.dd.all('modalidad', new Display);
-    obs.push(ob);
-
-    this.options = forkJoin(obs).pipe(
-      map(
-        options => {
-          var o = {};
-          o['plan'] = options[0];
-          o['modalidad'] = options[1];
-          return o;
-        }
-      )
-    );
+    this.optPlan$ = this.dd.all('plan', new Display);
+    this.optModalidad$ = this.dd.all('modalidad', new Display);
   }
 
   initData(): void {
